@@ -13,14 +13,17 @@ gsap.registerPlugin(Draggable, InertiaPlugin);
 
 const App = () => {
   useGSAP(() => {
-    if (document.querySelectorAll(".three-d")) {
-      document.querySelectorAll(".three-d").forEach((item) => {
-        Draggable.create(item, {
-          bounds: ".main-inner",
-          inertia: true,
+    const mm = gsap.matchMedia();
+    mm.add("(min-width:1024px)", () => {
+      if (document.querySelectorAll(".three-d")) {
+        document.querySelectorAll(".three-d").forEach((item) => {
+          Draggable.create(item, {
+            bounds: ".main-inner",
+            inertia: true,
+          });
         });
-      });
-    }
+      }
+    });
   });
   return (
     <div className="main h-dvh w-full  relative bg-[#141414] overflow-hidden flex justify-center items-center">
